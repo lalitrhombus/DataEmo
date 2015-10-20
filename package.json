@@ -1,0 +1,16 @@
+{
+  "name": "node-todo",
+  "version": "0.0.0",
+  "description": "Simple EMODATA application.",
+  "main": "server.js",
+  "author": "Scotch",
+  "dependencies": {
+    "angular": "^1.4.3",
+    "body-parser": "~1.4.3",
+    "express": "~4.6.1",
+    "method-override": "^2.3.4",
+    "mongoose": "~3.8.13",
+    "morgan": "~1.1.1",
+    "ng-infinite-scroll": "^1.2.0"
+  }
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html data-ng-app="empDetails" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DATAEMO</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/rzslider.min.css" rel="stylesheet">
+    <script src="js/angular.min.js"></script>
+    <script src="js/controllers/main.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+    <script src="js/ng-infinite-scroll.min.js"></script>
+    <!--[if lt IE 9]>
+	   <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js"></script>
+    <![endif]-->
+</head>
+<!-- SET THE CONTROLLER -->
+
+<body data-ng-controller="empListCtrl">
+    <header class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="logo-heading">
+					DATA<span style="color: #1CBB9B;">EMO</span>
+				</h1>
+            </div>
+            <div class="col-md-6 hidden-phone">
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="#"><i class="fa fa-bell-o"></i> Product Tour</a></li>
+                    <li><a href="#">Pipeline</a></li>
+                    <li><a href="#">Sourcing</a></li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Sign</a></li>
+                            <li><a href="#">Signout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="emp-row filter" class="container-fluid">
+        <div class="row">
+            <section class="col-md-3 filter-box">
+                <i class="fa fa-map-marker"></i>
+                <input type="text" class="small-input" list="city" ng-model="locationSearch" placeholder="All Locations" multiple />
+                <datalist id="city">
+                    <option data-ng-repeat="city in citiesList" value="{{city.ct}}"></option>
+                </datalist>
+            </section>
+            <section class="col-md-3 filter-box">
+                <i class="fa fa-pie-chart"></i>
+                <input type="text" class="small-input" list="industry" ng-model="industrySearch" placeholder="All Industry" multiple />
+                <datalist id="industry">
+                    <option data-ng-repeat="industry in industryList" value="{{industry.nm}}"></option>
+                </datalist>
+            </section>
+            <section class="col-md-4 slider-box">
+                <p>Experience</p>
+                <p class="range-field">
+                    <input type="range" ng-model="rangeSearch" min="0" max="10" />
+                </p>
+            </section>
+            <section class="col-md-2 advance">
+                <p>
+                    Advanced <span><i class="fa fa-search"></i></span>
+                </p>
+            </section>
+        </div>
+    </div>
+    <div class="emp-row" class="container-fluid">
+        <div class="row">
+            <section class="col-md-4">
+                <p class="title">
+                    <span class="abr">PM</span> Product Management
+                </p>
+            </section>
+            <section class="col-md-8">
+                <p class="results-count">Showing 1-{{pages*10}} Out of {{total}} Results</p>
+            </section>
+        </div>
+    </div>
+    <div id="topPlacePage" infinite-scroll="loadMoreData()">
+        <div class="emp-row coming" class="container-fluid" ng-repeat="item in itemsList | locationFilter:locationSearch | industryFilter:industrySearch | rangeFilter:rangeSearch">
+            <div class="row" data-value="{{counter}}">
+                <section class="col-md-9">
+                    <div class="col-md-2 em-img">
+                        <img class="emp-photo" data-ng-src="{{item.img}}" data-toggle="tooltip" title="Its me {{item.nm}}" />
+                    </div>
+                    <div class="col-md-10">
+                        <p class="name">{{item.nm}}</p>
+                        <p class="designation low-color">{{item.dsg}}</p>
+                        <p class="low-color">
+                            <i class="fa fa-map-marker"></i> {{item.ct}}, {{item.st}}, {{item.cn}}
+                        </p>
+                        <p class="low-color">
+                            <i class="fa fa-briefcase"></i> Worked at - {{item.org}}
+                        </p>
+                    </div>
+                </section>
+                <section class="col-md-3 list-move hidden-phone">
+                    <p class="link-move">More Likely to Move</p>
+                    <ul style="list-style: none;">
+                        <li class="move" data-ng-repeat="i in getNumber(item.mlm)">
+                            <span ng-style="">{{$index+1}}</span>
+                        </li>
+                        <li class="move deedbtn" data-ng-repeat="i in getlowNumber()">
+                            <span ng-style="">{{i}}</span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

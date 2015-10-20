@@ -1,0 +1,51 @@
+[
+    {
+        "cn":"India",
+		"st":"Andhra Pradesh",
+		"ct":"Hyderabad"
+    },
+    {
+        "cn":"India",
+		"st":"Arunachal Pradesh",
+		"ct":"Itanagar"
+    },
+    {
+        "cn":"India",
+		"st":"Assam",
+		"ct":"Dispur"
+    },
+    {
+        "cn":"India",
+		"st":"Bihar",
+		"ct":"Patna"
+    },
+    {
+        "cn":"India",
+		"st":"Chhattisgarh",
+		"ct":"Raipur"
+    }, {
+        "cn":"India",
+		"st":"Goa",
+		"ct":"Panaji"
+    },
+    {
+        "cn":"India",
+		"st":"Gujarat",
+		"ct":"Gandhinagar"
+    },
+    {
+        "cn":"India",
+		"st":"Haryana",
+		"ct":"Gurgaon"
+    },
+    {
+        "cn":"India",
+		"st":"Uttar Pradesh",
+		"ct":"Noida"
+    },
+    {
+        "cn":"India",
+		"st":"Punjab",
+		"ct":"Amritsar"
+    }
+]    
